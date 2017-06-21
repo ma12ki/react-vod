@@ -6,15 +6,14 @@
         "moduleResolution": "node",
         "sourceMap": true,
         "outDir": "dist",
-        "baseUrl": ".",
-        "paths": {
-            "*": [
-                "node_modules/*",
-                "src/types/*"
-            ]
-        }
+        "typeRoots": [
+            "node_modules/@types",
+            "src/types"
+        ],
+        "alwaysStrict": true,
+        "listEmittedFiles": true
     },
-    "include": [
-        "src/**/*"
+    "files": [
+        "src/server.ts"
     ]
 }

@@ -2,11 +2,9 @@
  * Module dependencies.
  */
 import * as express from 'express';
-import * as requestCompression from 'compression';
 import * as bodyParser from 'body-parser';
 import * as errorHandler from 'errorhandler';
 import * as logger from 'morgan';
-import * as lusca from 'lusca';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 import expressValidator = require('express-validator');
@@ -25,13 +23,10 @@ const app = express();
  * Express configuration.
  */
 app.set('port', process.env.PORT || 3000);
-app.use(requestCompression());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
-app.use(lusca.xframe('SAMEORIGIN'));
-app.use(lusca.xssProtection(true));
 
 /**
  * Primary app routes.
