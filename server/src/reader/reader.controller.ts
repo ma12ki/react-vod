@@ -30,18 +30,25 @@ const getVideoFilesRecursive = async (dir: string): Promise<IVideoFile[]> => {
         const subVideoFiles = await Promise.all(absoluteSubDirs.map((subDir) => getVideoFilesRecursive(subDir)));
         return flatten(subVideoFiles);
     } else {
-        return [
-            {
-                id: '1',
-                path: dir,
-                name: 'lol',
-                size: 1,
-                duration: 11,
-                dateCreated: new Date(),
-                dateModified: new Date(),
-            }
-        ];
+        if (isVideoFile(dir)) {
+            return [
+                {
+                    id: '1',
+                    path: dir,
+                    name: path.basename(dir),
+                    size: stats.size,
+                    duration: 11,
+                    dateCreated: stats.ctime,
+                    dateModified: stats.mtime,
+                }
+            ];
+        }
+        return [];
     }
+};
+
+const isVideoFile = (dir: string): boolean => {
+    return path.extname(dir).replace('.', '').match(/mp4|webm/i) !== null;
 };
 
 const flatten: (arr: any[][]) => any[] = (array) => array.reduce((flattened, arr) => flattened.concat(arr), []);

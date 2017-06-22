@@ -34,6 +34,10 @@ app.use(expressValidator());
  * Primary app routes.
  */
 app.get('/ping', (req: Request, res: Response) => res.send('pong xD'));
+app.get('/files', async (req: Request, res: Response) => {
+  const files = await getVideoFiles(['Q:/test']);
+  return res.send(files);
+});
 
 /**
  * Error Handler. Provides full stack - remove for production
@@ -47,9 +51,5 @@ app.listen(app.get('port'), () => {
   console.log(('  App is running at http://localhost:%d in %s mode'), app.get('port'), app.get('env'));
   console.log('  Press CTRL-C to stop\n');
 });
-
-getVideoFiles(['Q:/test'])
-  .then((res) => console.log(res))
-  .catch((err) => console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', err));
 
 export default app;
