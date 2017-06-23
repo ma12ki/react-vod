@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import { readdir, stat } from './utils/fs-promisified';
+import { readdir, stat, probe } from './utils/fs-promisified';
 
 interface IVideoFile {
     id: string;
@@ -31,13 +31,14 @@ const getVideoFilesRecursive = async (dir: string): Promise<IVideoFile[]> => {
         return flatten(subVideoFiles);
     } else {
         if (isVideoFile(dir)) {
+            const probeData = await probe(dir);
             return [
                 {
                     id: '1',
                     path: dir,
                     name: path.basename(dir),
                     size: stats.size,
-                    duration: 11,
+                    duration: probeData.format.duration,
                     dateCreated: stats.ctime,
                     dateModified: stats.mtime,
                 }
@@ -48,7 +49,7 @@ const getVideoFilesRecursive = async (dir: string): Promise<IVideoFile[]> => {
 };
 
 const isVideoFile = (dir: string): boolean => {
-    return path.extname(dir).replace('.', '').match(/mp4|webm/i) !== null;
+    return !!path.extname(dir).replace('.', '').match(/mp4|webm/i);
 };
 
 const flatten: (arr: any[][]) => any[] = (array) => array.reduce((flattened, arr) => flattened.concat(arr), []);
