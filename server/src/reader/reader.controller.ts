@@ -1,12 +1,16 @@
 import * as path from 'path';
+import * as fs from 'fs';
 import * as cuid from 'cuid';
+import * as _ from 'lodash';
 
-import { readdir, stat, probe } from './utils/fs-promisified';
+import { probe } from './utils/fs-promisified';
+import recursiveFileLister, { IFileInfo } from './utils/recursive-file-lister';
 
 interface IVideoFile {
     id: string;
     path: string;
     name: string;
+    title: string;
     size: number;
     duration: number;
     dateCreated: Date;
@@ -15,45 +19,31 @@ interface IVideoFile {
 
 const getVideoFiles = async (dirs: string[]): Promise<IVideoFile[]> => {
     const promises = dirs.map((dir) => {
-        return getVideoFilesRecursive(dir);
+        return recursiveFileLister(dir);
     });
-    return Promise.all(promises)
-        .then((videoFileArrays: IVideoFile[][]) => {
-            return flatten(videoFileArrays);
-        });
-};
-
-const getVideoFilesRecursive = async (dir: string): Promise<IVideoFile[]> => {
-    const stats = await stat(dir);
-    if (stats.isDirectory()) {
-        const subDirs = await readdir(dir);
-        const absoluteSubDirs = subDirs.map((subDir) => path.join(dir, subDir));
-        const subVideoFiles = await Promise.all(absoluteSubDirs.map((subDir) => getVideoFilesRecursive(subDir)));
-        return flatten(subVideoFiles);
-    } else {
-        if (isVideoFile(dir)) {
-            const probeData = await probe(dir);
-            return [
-                {
-                    id: cuid(),
-                    path: dir,
-                    name: path.basename(dir),
-                    size: stats.size,
-                    duration: probeData.format.duration,
-                    dateCreated: stats.ctime,
-                    dateModified: stats.mtime,
-                }
-            ];
-        }
-        return [];
-    }
+    const fileArrays = await Promise.all(promises);
+    const videoFiles = await Promise.all(_.flatten(fileArrays)
+        .filter((file: IFileInfo) => isVideoFile(file.path))
+        .map(async (file: IFileInfo) => {
+            const probeData = await probe(file.path);
+            const videoFile: IVideoFile = {
+                id: cuid(),
+                path: file.path,
+                name: path.basename(file.path),
+                title: probeData.metadata.title,
+                size: file.size,
+                duration: probeData.format.duration,
+                dateCreated: file.ctime,
+                dateModified: file.mtime,
+            };
+            return videoFile;
+        }));
+    return videoFiles;
 };
 
 const isVideoFile = (dir: string): boolean => {
     return !!path.extname(dir).replace('.', '').match(/mp4|webm/i);
 };
-
-const flatten: (arr: any[][]) => any[] = (array) => array.reduce((flattened, arr) => flattened.concat(arr), []);
 
 export {
     IVideoFile,
