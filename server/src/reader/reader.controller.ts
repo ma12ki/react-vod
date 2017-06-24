@@ -1,4 +1,5 @@
 import * as path from 'path';
+import * as cuid from 'cuid';
 
 import { readdir, stat, probe } from './utils/fs-promisified';
 
@@ -34,7 +35,7 @@ const getVideoFilesRecursive = async (dir: string): Promise<IVideoFile[]> => {
             const probeData = await probe(dir);
             return [
                 {
-                    id: '1',
+                    id: cuid(),
                     path: dir,
                     name: path.basename(dir),
                     size: stats.size,
