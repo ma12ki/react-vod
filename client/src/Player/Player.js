@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 export const Player = (props) => {
-    const { id, ext } = props; 
+    const { id, ext } = props;
     const type = getType(ext);
     const url = `http://localhost:3001/play/${id}`;
 
@@ -11,6 +11,11 @@ export const Player = (props) => {
             Your browser does not support the <code>video</code> element.
         </video>
     );
+};
+
+Player.propTypes = {
+    id: PropTypes.string.isRequired,
+    ext: PropTypes.string.isRequired,
 };
 
 const getType = (ext) => {

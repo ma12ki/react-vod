@@ -12,7 +12,7 @@ export const Video = (props) => {
     const { id, name, ext, title, size, duration, dateCreated, dateModified } = video; 
     return (
         <div>
-            <Player id={id} ext={ext} />
+            { id ? <Player id={id} ext={ext} /> : null }
             {name}{ext} - {title}
             <Link href={{ type: routesKeys.home }}>Home</Link>
         </div>
