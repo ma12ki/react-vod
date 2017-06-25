@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 
 import { listLoadStart } from './videos.actions';
 
+import VideoList from './VideoList/VideoList';
+
 const Videos = (props) => {
     return (
         <div>
             <button onClick={props.onLoad} type='button'>load</button>
+            <VideoList />
         </div>
     );
 };
