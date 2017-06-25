@@ -1,6 +1,5 @@
-const prefix = '[ROUTER]';
+import { routesMap as videosRoutesMap } from './Videos/routes';
 
 export const routesMap = { 
-  [`${prefix}HOME`]: '/', 
-  [`${prefix}VIDEO`]: '/video/:id', 
+  ...videosRoutesMap,
 };
