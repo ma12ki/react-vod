@@ -5,6 +5,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as errorHandler from 'errorhandler';
 import * as logger from 'morgan';
+import * as cors from 'cors';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 import expressValidator = require('express-validator');
@@ -26,6 +27,7 @@ const app = express();
  */
 app.set('port', process.env.PORT || 3001);
 app.use(logger('dev'));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
@@ -34,9 +36,9 @@ app.use(expressValidator());
  * Primary app routes.
  */
 app.get('/ping', (req: Request, res: Response) => res.send('pong xD'));
-app.get('/files', async (req: Request, res: Response) => {
-  const files = await getVideoFiles(['Q:/test']);
-  return res.send(files);
+app.get('/videos', async (req: Request, res: Response) => {
+  const videos = await getVideoFiles(['Q:/test']);
+  return res.send(videos);
 });
 
 /**
