@@ -1,24 +1,14 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import * as cuid from 'cuid';
 import * as _ from 'lodash';
 
+import { IVideoFile, INewVideoFile, store, retrieve } from '../store/video-file-store';
 import { probe } from './utils/fs-promisified';
 import recursiveFileLister, { IFileInfo } from './utils/recursive-file-lister';
 
-interface IVideoFile {
-    id: string;
-    path: string;
-    name: string;
-    ext: string;
-    title: string;
-    size: number;
-    duration: number;
-    dateCreated: Date;
-    dateModified: Date;
-}
+const getVideoFiles = async () => retrieve();
 
-const getVideoFiles = async (dirs: string[]): Promise<IVideoFile[]> => {
+const refreshVideoFiles = async (dirs: string[]): Promise<IVideoFile[]> => {
     const promises = dirs.map((dir) => {
         return recursiveFileLister(dir);
     });
@@ -27,8 +17,7 @@ const getVideoFiles = async (dirs: string[]): Promise<IVideoFile[]> => {
         .filter((file: IFileInfo) => isVideoFile(file.path))
         .map(async (file: IFileInfo) => {
             const probeData = await probe(file.path);
-            const videoFile: IVideoFile = {
-                id: cuid(),
+            const videoFile: INewVideoFile = {
                 path: file.path,
                 name: path.basename(file.path, probeData.fileext),
                 ext: probeData.fileext,
@@ -40,7 +29,9 @@ const getVideoFiles = async (dirs: string[]): Promise<IVideoFile[]> => {
             };
             return videoFile;
         }));
-    return videoFiles;
+
+    const savedFiles = store(videoFiles);
+    return savedFiles;
 };
 
 const isVideoFile = (dir: string): boolean => {
@@ -48,6 +39,6 @@ const isVideoFile = (dir: string): boolean => {
 };
 
 export {
-    IVideoFile,
     getVideoFiles,
+    refreshVideoFiles,
 };

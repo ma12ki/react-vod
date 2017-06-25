@@ -11,7 +11,7 @@ import * as path from 'path';
 import expressValidator = require('express-validator');
 import { Request, Response } from 'express';
 
-import { getVideoFiles } from './reader/reader.controller';
+import { getVideoFiles, refreshVideoFiles } from './reader/reader.controller';
 
 /**
  * Controllers (route handlers).
@@ -36,8 +36,12 @@ app.use(expressValidator());
  * Primary app routes.
  */
 app.get('/ping', (req: Request, res: Response) => res.send('pong xD'));
+app.get('/refresh-videos', async (req: Request, res: Response) => {
+  const videos = await refreshVideoFiles(['Q:/test']);
+  return res.send(videos);
+});
 app.get('/videos', async (req: Request, res: Response) => {
-  const videos = await getVideoFiles(['Q:/test']);
+  const videos = await getVideoFiles();
   return res.send(videos);
 });
 
@@ -53,5 +57,9 @@ app.listen(app.get('port'), () => {
   console.log(('  App is running at http://localhost:%d in %s mode'), app.get('port'), app.get('env'));
   console.log('  Press CTRL-C to stop\n');
 });
+
+refreshVideoFiles(['Q:/test'])
+  .then(() => console.log('--------- refreshed video files'))
+  .catch((err) => console.log('---------- failed to refresh video files', err));
 
 export default app;
