@@ -10,6 +10,7 @@ interface IVideoFile {
     id: string;
     path: string;
     name: string;
+    ext: string;
     title: string;
     size: number;
     duration: number;
@@ -29,7 +30,8 @@ const getVideoFiles = async (dirs: string[]): Promise<IVideoFile[]> => {
             const videoFile: IVideoFile = {
                 id: cuid(),
                 path: file.path,
-                name: path.basename(file.path),
+                name: path.basename(file.path, probeData.fileext),
+                ext: probeData.fileext,
                 title: probeData.metadata.title,
                 size: file.size,
                 duration: probeData.format.duration,
