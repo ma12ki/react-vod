@@ -12,6 +12,7 @@ import expressValidator = require('express-validator');
 import { Request, Response } from 'express';
 
 import { getVideoFiles, refreshVideoFiles } from './reader/reader.controller';
+import { stream } from './streamer/streamer.controller';
 
 /**
  * Controllers (route handlers).
@@ -43,6 +44,11 @@ app.get('/refresh-videos', async (req: Request, res: Response) => {
 app.get('/videos', async (req: Request, res: Response) => {
   const videos = await getVideoFiles();
   return res.send(videos);
+});
+
+app.get('/play/:id', async (req: Request, res: Response) => {
+  const movie = await stream(req.params.id);
+  return res.send(movie);
 });
 
 /**
