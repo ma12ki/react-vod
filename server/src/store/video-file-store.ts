@@ -38,7 +38,10 @@ const store = (files: INewVideoFile[]) => {
 
 const retrieve: () => IVideoFile[] = () => (get(storeKey) || []);
 
+const retrieveOne: (id: string) => IVideoFile = (id) => retrieve().find((file) => file.id === id);
+
 export {
     store,
     retrieve,
+    retrieveOne,
 };
