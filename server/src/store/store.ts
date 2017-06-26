@@ -1,17 +1,22 @@
-let memory = {};
+export interface IMemory {
+    [key: string]: any;
+}
 
-const store = (key: string, value: any) => {
-    memory = {
-        ...memory,
-        [key]: value,
-    };
+export interface IStore {
+    get: (key: string) => Promise<any>;
+    set: (key: string, value: any) => Promise<void>;
+}
+
+const memory: IMemory = {};
+
+const store: IStore = {
+    async get(key: string) {
+        return memory[key];
+    },
+
+    async set(key: string, value: any) {
+        memory[key] = value;
+    }
 };
 
-const retrieve = (key: string) => {
-    return memory[key];
-};
-
-export {
-    store,
-    retrieve,
-};
+export { store };
