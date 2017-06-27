@@ -4,10 +4,10 @@ import * as fs from 'fs';
 import * as _ from 'lodash';
 
 import { configTypes } from '../config';
+import { utilsTokens, IFsp } from '../utils';
 import { storeTypes, IVideoStore, IVideoFile, INewVideoFile } from '../store';
 
-import { probe } from '../utils/fs-promisified';
-import recursiveFileLister, { IFileInfo } from '../utils/recursive-file-lister';
+import { IFileInfo } from '../utils';
 
 export interface IReader {
     getVideoFiles: () => Promise<IVideoFile[]>;
@@ -18,19 +18,20 @@ export interface IReader {
 class ReaderService implements IReader {
     constructor(
         @inject(configTypes.videoFileDirs) private dirs: string[],
+        @inject(utilsTokens.fsp) private fsp: IFsp,
         @inject(storeTypes.videoStore) private store: IVideoStore,
     ) {}
 
     public getVideoFiles: () => Promise<IVideoFile[]> = async () => this.store.get();
     public refreshVideoFiles: () => Promise<IVideoFile[]> = async () => {
         const promises = this.dirs.map((dir) => {
-            return recursiveFileLister(dir);
+            return this.fsp.getFilesRecursive(dir);
         });
         const fileArrays = await Promise.all(promises);
         const videoFiles = await Promise.all(_.flatten(fileArrays)
             .filter((file: IFileInfo) => this.isVideoFile(file.path))
             .map(async (file: IFileInfo) => {
-                const probeData = await probe(file.path);
+                const probeData = await this.fsp.probe(file.path);
                 const videoFile: INewVideoFile = {
                     path: file.path,
                     name: path.basename(file.path, probeData.fileext),

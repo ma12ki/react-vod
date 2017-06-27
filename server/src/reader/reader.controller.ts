@@ -4,14 +4,14 @@ import { interfaces, Controller, Get, Post, Delete, Response } from 'inversify-e
 
 import { IVideoFile } from '../store';
 import { IReader } from './reader.service';
-import { readerTypes } from './reader.types';
+import { readerTokens } from './reader.tokens';
 
 @Controller('/videos')
 @injectable()
 export class ReaderController implements interfaces.Controller {
 
     constructor(
-        @inject(readerTypes.readerService) private readerService: IReader,
+        @inject(readerTokens.readerService) private readerService: IReader,
     ) {}
 
     @Get('/')
