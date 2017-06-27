@@ -1,6 +1,6 @@
-const storeTypes = {
+const storeTokens = {
     store: Symbol('store'),
     videoStore: Symbol('videoStore'),
 };
 
-export { storeTypes };
+export { storeTokens };

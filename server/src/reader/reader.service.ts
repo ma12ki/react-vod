@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 
 import { configTokens } from '../config';
 import { utilsTokens, IFsp } from '../utils';
-import { storeTypes, IVideoStore, IVideoFile, INewVideoFile } from '../store';
+import { storeTokens, IVideoStore, IVideoFile, INewVideoFile } from '../store';
 
 import { IFileInfo } from '../utils';
 
@@ -19,7 +19,7 @@ class ReaderService implements IReader {
     constructor(
         @inject(configTokens.videoFileDirs) private dirs: string[],
         @inject(utilsTokens.fsp) private fsp: IFsp,
-        @inject(storeTypes.videoStore) private store: IVideoStore,
+        @inject(storeTokens.videoStore) private store: IVideoStore,
     ) {}
 
     public getVideoFiles: () => Promise<IVideoFile[]> = async () => this.store.get();

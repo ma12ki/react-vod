@@ -1,12 +1,12 @@
 import { ContainerModule, interfaces } from 'inversify';
 
-import { storeTypes } from './store.types';
+import { storeTokens } from './store.tokens';
 import { store, IStore } from './store';
 import { VideoStore, IVideoStore } from './video-store';
 
 const storeModule = new ContainerModule((bind: interfaces.Bind) => {
-    bind<IStore>(storeTypes.store).toConstantValue(store);
-    bind<IVideoStore>(storeTypes.videoStore).to(VideoStore);
+    bind<IStore>(storeTokens.store).toConstantValue(store);
+    bind<IVideoStore>(storeTokens.videoStore).to(VideoStore);
 });
 
 export { storeModule };

@@ -1,7 +1,7 @@
 import * as cuid from 'cuid';
 import { injectable, inject } from 'inversify';
 
-import { storeTypes } from './store.types';
+import { storeTokens } from './store.tokens';
 import { IStore, store } from './store';
 
 const storeKey = 'VIDEO_FILES';
@@ -30,7 +30,7 @@ export interface IVideoStore {
 @injectable()
 class VideoStore implements IVideoStore {
     constructor(
-        @inject(storeTypes.store) private store: IStore,
+        @inject(storeTokens.store) private store: IStore,
     ) {}
     public get: () => Promise<IVideoFile[]> = async () => {
         const videoFiles = await this.store.get(storeKey);
