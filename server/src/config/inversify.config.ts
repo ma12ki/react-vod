@@ -1,8 +1,16 @@
 import { Container } from 'inversify';
 
-import { storeModule } from './container-modules';
+import {
+    configModule,
+    storeModule,
+    readerModule,
+} from './container-modules';
 
 const container = new Container();
-container.load(storeModule);
+container.load(
+    configModule,
+    storeModule,
+    readerModule,
+);
 
 export { container };

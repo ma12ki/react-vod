@@ -1,7 +1,6 @@
 import * as cuid from 'cuid';
 import { injectable, inject } from 'inversify';
 
-import { bindDependencies } from '../utils/bind-dependencies';
 import { storeTypes } from './store.types';
 import { IStore, store } from './store';
 
