@@ -2,6 +2,7 @@ import { Container } from 'inversify';
 
 import {
     configModule,
+    utilsModule,
     storeModule,
     readerModule,
     streamerModule,
@@ -10,6 +11,7 @@ import {
 const container = new Container();
 container.load(
     configModule,
+    utilsModule,
     storeModule,
     readerModule,
     streamerModule,
