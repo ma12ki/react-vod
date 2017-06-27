@@ -15,7 +15,7 @@ export class ReaderController implements interfaces.Controller {
     ) {}
 
     @Get('/')
-    public getVideoFiles(req: express.Request, res: express.Response, next: express.NextFunction): Promise<IVideoFile[]> {
+    public async getVideoFiles(req: express.Request, res: express.Response, next: express.NextFunction): Promise<IVideoFile[]> {
         return this.readerService.getVideoFiles();
     }
 

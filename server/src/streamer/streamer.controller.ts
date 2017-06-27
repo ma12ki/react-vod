@@ -1,16 +1,22 @@
-import * as fs from 'fs';
-import * as util from 'util';
+import * as express from 'express';
+import { injectable, inject } from 'inversify';
+import { interfaces, Controller, Get, Post, Delete, Response } from 'inversify-express-utils';
 
-import { retrieveOne, IVideoFile } from '../store/video-file-store';
+import { IVideoFile } from '../store';
+import { IStreamer } from './streamer.service';
+import { streamerTokens } from './streamer.tokens';
 
-const readFileP = util.promisify(fs.readFile);
+@Controller('/play')
+@injectable()
+export class StreamerController implements interfaces.Controller {
 
-const stream = async (id: string) => {
-    const file = retrieveOne(id);
-    const movie = await readFileP(file.path);
-    return movie;
-};
+    constructor(
+        @inject(streamerTokens.streamerService) private streamerService: IStreamer,
+    ) {}
 
-export {
-    stream,
-};
+    @Get('/:id')
+    public async stream(req: express.Request, res: express.Response, next: express.NextFunction): Promise<any> {
+        const { id } = req.params;
+        return this.streamerService.stream(id);
+    }
+}

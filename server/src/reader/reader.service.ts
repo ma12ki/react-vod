@@ -1,7 +1,7 @@
-import { inject, injectable } from 'inversify';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as _ from 'lodash';
+import { inject, injectable } from 'inversify';
 
 import { configTokens } from '../config';
 import { utilsTokens, IFsp } from '../utils';
@@ -15,7 +15,7 @@ export interface IReader {
 }
 
 @injectable()
-class ReaderService implements IReader {
+export class ReaderService implements IReader {
     constructor(
         @inject(configTokens.videoFileDirs) private dirs: string[],
         @inject(utilsTokens.fsp) private fsp: IFsp,
@@ -53,5 +53,3 @@ class ReaderService implements IReader {
         return !!path.extname(dir).replace('.', '').match(/mp4|webm/i);
     };
 }
-
-export { ReaderService };
