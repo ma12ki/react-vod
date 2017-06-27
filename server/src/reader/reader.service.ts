@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as _ from 'lodash';
 
-import { configTypes } from '../config';
+import { configTokens } from '../config';
 import { utilsTokens, IFsp } from '../utils';
 import { storeTypes, IVideoStore, IVideoFile, INewVideoFile } from '../store';
 
@@ -17,7 +17,7 @@ export interface IReader {
 @injectable()
 class ReaderService implements IReader {
     constructor(
-        @inject(configTypes.videoFileDirs) private dirs: string[],
+        @inject(configTokens.videoFileDirs) private dirs: string[],
         @inject(utilsTokens.fsp) private fsp: IFsp,
         @inject(storeTypes.videoStore) private store: IVideoStore,
     ) {}

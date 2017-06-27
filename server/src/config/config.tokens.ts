@@ -1,5 +1,5 @@
-const configTypes = {
+const configTokens = {
     videoFileDirs: Symbol('videoFileDirs'),
 };
 
-export { configTypes };
+export { configTokens };
