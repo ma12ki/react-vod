@@ -14,10 +14,7 @@ import { InversifyExpressServer } from 'inversify-express-utils';
 import 'reflect-metadata';
 
 import { container } from './config';
-// import { storeTypes } from './config/types';
-
-// import { getVideoFiles, refreshVideoFiles } from './reader/reader.controller';
-// import { stream } from './streamer/streamer.controller';
+import { readerTokens, IReader } from './reader';
 
 /**
  * Controllers (route handlers).
@@ -38,26 +35,7 @@ server.setConfig((app) => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(expressValidator());
-
-    app.get('/ping', (req: Request, res: Response) => res.send('pong xD'));
 });
-
-/**
- * Primary app routes.
- */
-// app.get('/refresh-videos', async (req: Request, res: Response) => {
-//   const videos = await refreshVideoFiles(['Q:/test']);
-//   return res.send(videos);
-// });
-// app.get('/videos', async (req: Request, res: Response) => {
-//   const videos = await getVideoFiles();
-//   return res.send(videos);
-// });
-
-// app.get('/play/:id', async (req: Request, res: Response) => {
-//   const movie = await stream(req.params.id);
-//   return res.send(movie);
-// });
 
 /**
  * Error Handler. Provides full stack - remove for production
@@ -78,8 +56,10 @@ app.listen(app.get('port'), () => {
   console.log('  Press CTRL-C to stop\n');
 });
 
-// refreshVideoFiles(['Q:/test'])
-//   .then(() => console.log('--------- refreshed video files'))
-//   .catch((err) => console.log('---------- failed to refresh video files', err));
+const reader: IReader = container.get<IReader>(readerTokens.readerService);
+
+reader.refreshVideoFiles()
+  .then(() => console.log('--------- refreshed video files'))
+  .catch((err) => console.log('---------- failed to refresh video files', err));
 
 export default app;
