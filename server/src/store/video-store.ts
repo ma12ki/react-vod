@@ -1,4 +1,5 @@
-import * as cuid from 'cuid';
+import * as slug from 'slug';
+import * as uid from 'uid-safe';
 import { injectable, inject } from 'inversify';
 
 import { storeTokens } from './store.tokens';
@@ -43,18 +44,26 @@ class VideoStore implements IVideoStore {
     public set: (videoFiles: INewVideoFile[]) => Promise<IVideoFile[]> = async (videoFiles) => {
         const prevFiles = await this.get();
 
-        const newFiles: IVideoFile[] = videoFiles.map((file) => {
+        const newFilePromises: Promise<IVideoFile>[] = videoFiles.map(async (file) => {
             const prevFile = prevFiles.find((prevFile) => prevFile.path === file.path && prevFile.size === file.size);
 
             if (prevFile) return prevFile;
+            const id = await this.uniqueId(file.name);
             return {
                 ...file,
-                id: cuid(),
+                id,
             };
         });
 
+        const newFiles: IVideoFile[] = await Promise.all(newFilePromises);
+
         await this.store.set(storeKey, newFiles);
         return newFiles;
+    }
+    private uniqueId: (name: string) => Promise<string> = async (name) => {
+        const uniquePart = await uid(4);
+        const id = slug(`${name}_${uniquePart}`);
+        return id;
     }
 }
 
