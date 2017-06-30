@@ -11,6 +11,7 @@ import { IFileInfo } from '../utils';
 
 export interface IReader {
     getVideoFiles: () => Promise<IVideoFile[]>;
+    getVideoFile: (id: string) => Promise<IVideoFile>;
     refreshVideoFiles: () => Promise<IVideoFile[]>;
 }
 
@@ -23,6 +24,7 @@ export class ReaderService implements IReader {
     ) {}
 
     public getVideoFiles: () => Promise<IVideoFile[]> = async () => this.store.get();
+    public getVideoFile: (id: string) => Promise<IVideoFile> = async (id) => this.store.getOne(id);
     public refreshVideoFiles: () => Promise<IVideoFile[]> = async () => {
         const promises = this.dirs.map((dir) => {
             return this.fsp.getFilesRecursive(dir);

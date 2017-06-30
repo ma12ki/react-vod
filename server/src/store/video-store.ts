@@ -20,6 +20,7 @@ export interface INewVideoFile {
 
 export interface IVideoFile extends INewVideoFile {
     id: string;
+    slug: string;
 }
 
 export interface IVideoStore {
@@ -61,8 +62,8 @@ class VideoStore implements IVideoStore {
         return newFiles;
     }
     private uniqueId: (name: string) => Promise<string> = async (name) => {
-        const uniquePart = await uid(4);
-        const id = slug(`${name}_${uniquePart}`);
+        const uniqueString = await uid(6);
+        const id = slug(`${uniqueString}-${name}`);
         return id;
     }
 }
