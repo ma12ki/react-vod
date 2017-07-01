@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://localhost:3001/';
+import { apiUrl } from '../config';
 
 const apiFetch = (path, method = 'GET') => {
     const headers = new Headers();
@@ -11,7 +11,7 @@ const apiFetch = (path, method = 'GET') => {
         mode: 'cors',
         cache: 'no-store',
     };
-    return fetch(`${API_URL}${path}`, config).then((response) => {
+    return fetch(`${apiUrl}${path}`, config).then((response) => {
         if (response.ok) {
             return response.json();
         }

@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { apiUrl } from '../../config';
+
 export const Player = (props) => {
     const { id, ext } = props;
     const type = getType(ext);
-    const url = `http://localhost:3001/play/${id}`;
+    const url = `${apiUrl}play/${id}`;
 
     return (
         <video controls preload='metadata'>
