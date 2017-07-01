@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Link from 'redux-first-router-link';
+import { Card, CardBlock, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 
 import { routesKeys } from '../routes';
 import { getPayload } from '../../router.selectors';
 import { getVideosEntity } from '../selectors';
 import { loadVideoStart } from '../ducks';
 import Player from '../../Player/Player';
+import { FileDuration, FileSize } from '../../shared';
 
 export class Video extends React.PureComponent {
     static propTypes = {
@@ -26,12 +28,22 @@ export class Video extends React.PureComponent {
 
     render() {
         const { video } = this.props;
-        const { id, name, ext, title, size, duration, dateCreated, dateModified } = video; 
+        const { id, name, ext, title, size = 0, duration = 0 } = video; 
         return (
             <div>
-                { id ? <Player id={id} ext={ext} /> : null }
-                {name}{ext} - {title}
-                <Link href={{ type: routesKeys.home }}>Home</Link>
+                <Card>
+                    <CardBlock>
+                        { id ? <Player id={id} ext={ext} /> : null }
+                    </CardBlock>
+                    <CardBlock>
+                        <CardTitle>{name}{ext}</CardTitle>
+                        <CardSubtitle>
+                            <FileDuration duration={duration} />, <FileSize size={size} />
+                        </CardSubtitle>
+                        <CardText>{title}</CardText>
+                        <Link href={{ type: routesKeys.home }}>{'<<'} Back</Link>
+                    </CardBlock>
+                </Card>
             </div>
         );
     }

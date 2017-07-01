@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export const Player = (props) => {
     const { id, ext } = props;
@@ -6,7 +7,7 @@ export const Player = (props) => {
     const url = `http://localhost:3001/play/${id}`;
 
     return (
-        <video controls preload='auto'>
+        <video controls preload='metadata'>
             <source src={url} type={type} />
             Your browser does not support the <code>video</code> element.
         </video>
