@@ -5,7 +5,7 @@ import moment from 'moment';
 import FA from 'react-fontawesome';
 
 import { routesKeys } from '../routes';
-import { FileDuration } from '../../shared';
+import { FileDuration, FileSize } from '../../shared';
 
 export const VideoItem = (props) => {
     const { video } = props;
@@ -16,7 +16,7 @@ export const VideoItem = (props) => {
             <th scope='row' title={title + '; ' + path}>{name}</th>
             <td>{moment(dateCreated).format('DD.MM.YYYY')}</td>
             <td><FileDuration duration={duration} /></td>
-            <td>{size}</td>
+            <td><FileSize size={size} /></td>
             <td>
                 <Link href={{ type: routesKeys.video, payload: { id } }}>
                     <FA name='play' />
