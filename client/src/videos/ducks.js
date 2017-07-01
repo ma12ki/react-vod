@@ -61,7 +61,7 @@ export const loadVideosList$ = action$ =>
 
 export const loadOneVideo$ = action$ =>
     action$.ofType(LOAD_VIDEO_START)
-        .switchMap(({ payload }) => getOneVideo$(payload.id))
+        .switchMap(({ payload }) => getOneVideo$(payload))
             .map((res) => loadVideoSuccess(res))
             .catch((err) => Observable.of(loadVideoError(err)));
 

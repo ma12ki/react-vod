@@ -5,7 +5,7 @@ const getError = (state) => getVideos(state).error;
 const getVideosResult = (state) => getVideos(state).result || [];
 const getEntities = (state) => getVideos(state).entities || {};
 const getVideosEntities = (state) => getEntities(state).videos || {};
-const getVideosEntity = (state, id) => getEntities(state)[id] || {};
+const getVideosEntity = (state, id) => getVideosEntities(state)[id] || {};
 
 const getVideosArray = (state) => {
     const entities = getVideosEntities(state);
