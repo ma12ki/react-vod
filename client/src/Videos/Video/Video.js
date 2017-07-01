@@ -8,7 +8,7 @@ import { routesKeys } from '../routes';
 import { getPayload } from '../../router.selectors';
 import { getVideosEntity } from '../selectors';
 import { loadVideoStart } from '../ducks';
-import Player from '../../Player/Player';
+import { Player } from '../../player';
 import { FileDuration, FileSize } from '../../shared';
 
 export class Video extends React.PureComponent {
