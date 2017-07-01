@@ -5,15 +5,12 @@ import { connect } from 'react-redux';
 import { getInitialized } from '../selectors';
 import { loadVideosStart } from '../ducks';
 import { VideoList } from '../VideoList';
+import { VideoSearch } from '../VideoSearch';
 
 export class Videos extends React.PureComponent {
     static propTypes = {
         initialized: PropTypes.bool.isRequired,
         loadVideos: PropTypes.func.isRequired,
-    }
-
-    constructor(props) {
-        super(props);
     }
 
     componentDidMount() {
@@ -23,7 +20,12 @@ export class Videos extends React.PureComponent {
     }
 
     render() {
-        return <VideoList />;
+        return (
+            <div>
+                <VideoSearch />
+                <VideoList />
+            </div>
+        );
     }
 }
 

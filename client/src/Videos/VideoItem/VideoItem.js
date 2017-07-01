@@ -13,7 +13,7 @@ export const VideoItem = (props) => {
 
     return (
         <tr>
-            <th scope='row' title={title + '; ' + path}>{name}</th>
+            <td title={title + '; ' + path}>{name}</td>
             <td>{moment(dateCreated).format('DD.MM.YYYY')}</td>
             <td><FileDuration duration={duration} /></td>
             <td><FileSize size={size} /></td>

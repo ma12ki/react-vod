@@ -16,6 +16,8 @@ const LOAD_VIDEO_START = `${prefix}LOAD_VIDEO_START`;
 const LOAD_VIDEO_SUCCESS = `${prefix}LOAD_VIDEO_SUCCESS`;
 const LOAD_VIDEO_ERROR = `${prefix}LOAD_VIDEO_ERROR`;
 
+const SEARCH = `${prefix}SEARCH`;
+
 // Action creators
 export const loadVideosStart = () => ({ type: LOAD_VIDEOS_START });
 export const loadVideosSuccess = (payload) => ({ type: LOAD_VIDEOS_SUCCESS, payload });
@@ -24,6 +26,8 @@ export const loadVideosError = (payload) => ({ type: LOAD_VIDEOS_ERROR, payload 
 export const loadVideoStart = (payload) => ({ type: LOAD_VIDEO_START, payload });
 export const loadVideoSuccess = (payload) => ({ type: LOAD_VIDEO_SUCCESS, payload });
 export const loadVideoError = (payload) => ({ type: LOAD_VIDEO_ERROR, payload });
+
+export const search = (payload) => ({ type: SEARCH, payload });
 
 // Reducers
 export const oneVideoReducer = loadingErrorReducer(LOAD_VIDEO_START, LOAD_VIDEO_SUCCESS, LOAD_VIDEO_ERROR);
@@ -42,12 +46,24 @@ export const initializedReducer = (state = false, action = {}) => {
     }
 };
 
+export const searchReducer = (state = '', action = {}) => {
+    switch (action.type) {
+        case SEARCH: {
+            return action.payload;
+        }
+        default: {
+            return state;
+        }
+    }
+};
+
 const reducer = combineReducers({
     one: oneVideoReducer,
     list: videoListReducer,
     entities: videoEntitiesReducer,
     result: videoResultReducer,
     initialized: initializedReducer,
+    search: searchReducer,
 });
 
 export default reducer;

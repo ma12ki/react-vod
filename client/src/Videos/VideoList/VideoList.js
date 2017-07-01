@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Table } from 'reactstrap';
 
-import { getVideosArray } from '../selectors';
+import { getFilteredVideos } from '../selectors';
 import { VideoItem } from '../VideoItem';
 
 const VideoList = ({ items }) => {
@@ -31,7 +31,7 @@ const VideoList = ({ items }) => {
 };
 
 const mapStateToProps = (state) => ({
-    items: getVideosArray(state),
+    items: getFilteredVideos(state),
 });
 
 export default connect(mapStateToProps)(VideoList);

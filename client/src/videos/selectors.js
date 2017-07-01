@@ -14,6 +14,14 @@ const getVideosArray = (state) => {
     return result.map((id) => entities[id]);
 };
 
+const getSearch = (state) => getVideos(state).search;
+const getFilteredVideos = (state) => {
+    const term = getSearch(state);
+    const videos = getVideosArray(state);
+
+    return term ? videos.filter((video) => video.name.match(new RegExp(term, 'i'))) : videos;
+};
+
 export {
     getInitialized,
     getLoading,
@@ -22,4 +30,6 @@ export {
     getVideosEntity,
     getVideosResult,
     getVideosArray,
+    getSearch,
+    getFilteredVideos,
 };
