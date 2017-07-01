@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { apiUrl } from '../../config';
+import { aspectRatios } from '../../shared/cssModules';
 
 export const Player = (props) => {
     const { id, ext } = props;
@@ -9,10 +10,12 @@ export const Player = (props) => {
     const url = `${apiUrl}play/${id}`;
 
     return (
-        <video controls preload='metadata'>
-            <source src={url} type={type} />
-            Your browser does not support the <code>video</code> element.
-        </video>
+        <div className={aspectRatios.ar16_9}>
+            <video controls preload='metadata'>
+                <source src={url} type={type} />
+                Your browser does not support the <code>video</code> element.
+            </video>
+        </div>
     );
 };
 

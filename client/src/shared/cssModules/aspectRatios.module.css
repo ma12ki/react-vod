@@ -1,0 +1,24 @@
+.ar {
+    display: block;
+    max-width: 100%;
+    position: relative;
+}
+.ar:before {
+    content: '';
+    display: block;
+}
+.ar > * {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.ar16_9 {
+    composes: ar;
+}
+.ar16_9:before {
+    padding-top: 56.25%;
+}
