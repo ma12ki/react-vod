@@ -7,19 +7,20 @@ import FA from 'react-fontawesome';
 import { routesKeys } from '../routes';
 import { FileDuration, FileSize, HighlightOccurences } from '../../shared';
 import { getSearch } from '../selectors';
+import { utils } from '../../shared/cssModules';
 
 export const VideoItem = ({ video, searchTerm }) => {
     const { id, name, title, path, size, duration, dateCreated } = video; 
 
     return (
         <tr>
-            <td title={title + '; ' + path}>
+            <td title={title + '; ' + path} className={utils.alignLeft}>
                 <HighlightOccurences term={searchTerm}>{name}</HighlightOccurences>
             </td>
-            <td>{moment(dateCreated).format('DD.MM.YYYY')}</td>
-            <td><FileDuration duration={duration} /></td>
-            <td><FileSize size={size} /></td>
-            <td>
+            <td className={utils.center}>{moment(dateCreated).format('DD.MM.YYYY')}</td>
+            <td className={utils.alignRight}><FileDuration duration={duration} /></td>
+            <td className={utils.alignRight}><FileSize size={size} /></td>
+            <td className={utils.center}>
                 <Link href={{ type: routesKeys.video, payload: { id } }}>
                     <FA name='play' />
                 </Link>

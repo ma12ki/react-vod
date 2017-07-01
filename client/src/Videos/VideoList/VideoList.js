@@ -4,6 +4,7 @@ import { Table } from 'reactstrap';
 
 import { getFilteredVideos } from '../selectors';
 import { VideoItem } from '../VideoItem';
+import { utils } from '../../shared/cssModules';
 
 const VideoList = ({ items }) => {
     const videos = items.map((video) => {
@@ -16,10 +17,10 @@ const VideoList = ({ items }) => {
         <Table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Date created</th>
-                    <th>Duration</th>
-                    <th>Size</th>
+                    <th className={utils.alignLeft}>Name</th>
+                    <th className={utils.center}>Date created</th>
+                    <th className={utils.alignRight}>Duration</th>
+                    <th className={utils.alignRight}>Size</th>
                     <th></th>
                 </tr>
             </thead>
