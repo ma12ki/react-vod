@@ -26,6 +26,24 @@ const publicUrl = publicPath.slice(0, -1);
 // Get environment variables to inject into our app.
 const env = getClientEnvironment(publicUrl);
 
+// Options for PostCSS as we reference these options twice
+// Adds vendor prefixing to support IE9 and above
+const postCSSLoaderOptions = {
+  ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+  plugins: () => [
+    require('postcss-flexbugs-fixes'),
+    autoprefixer({
+      browsers: [
+        '>1%',
+        'last 4 versions',
+        'Firefox ESR',
+        'not ie < 9', // React doesn't support IE8 anyway
+      ],
+      flexbox: 'no-2009',
+    }),
+  ],
+};
+
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
 if (env.stringified['process.env'].NODE_ENV !== '"production"') {
@@ -174,8 +192,10 @@ module.exports = {
       // tags. If you use code splitting, however, any async bundles will still
       // use the "style" loader inside the async code so CSS from them won't be
       // in the main CSS file.
+      // By default we support CSS Modules with the extension .module.css
       {
         test: /\.css$/,
+        exclude: /\.module\.css$/,
         loader: ExtractTextPlugin.extract(
           Object.assign(
             {
@@ -191,21 +211,37 @@ module.exports = {
                 },
                 {
                   loader: require.resolve('postcss-loader'),
+                  options: postCSSLoaderOptions,
+                },
+              ],
+            },
+            extractTextPluginOptions
+          )
+        ),
+        // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+      },
+      // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
+      // using the extension .module.css
+      {
+        test: /\.module\.css$/,
+        loader: ExtractTextPlugin.extract(
+          Object.assign(
+            {
+              fallback: require.resolve('style-loader'),
+              use: [
+                {
+                  loader: require.resolve('css-loader'),
                   options: {
-                    ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-                    plugins: () => [
-                      require('postcss-flexbugs-fixes'),
-                      autoprefixer({
-                        browsers: [
-                          '>1%',
-                          'last 4 versions',
-                          'Firefox ESR',
-                          'not ie < 9', // React doesn't support IE8 anyway
-                        ],
-                        flexbox: 'no-2009',
-                      }),
-                    ],
+                    importLoaders: 1,
+                    minimize: true,
+                    sourceMap: true,
+                    modules: true,
+                    localIdentName: '[name]__[local]___[hash:base64:5]',
                   },
+                },
+                {
+                  loader: require.resolve('postcss-loader'),
+                  options: postCSSLoaderOptions,
                 },
               ],
             },

@@ -6,6 +6,7 @@
     "bootstrap": "^4.0.0-alpha.6",
     "font-awesome": "^4.7.0",
     "history": "^4.6.3",
+    "identity-obj-proxy": "^3.0.0",
     "moment": "^2.18.1",
     "normalizr": "^3.2.3",
     "prop-types": "^15.5.10",
@@ -86,10 +87,12 @@
       "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
     "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$",
+      "^.+\\.module\\.css$"
     ],
     "moduleNameMapper": {
-      "^react-native$": "react-native-web"
+      "^react-native$": "react-native-web",
+      "^.+\\.module\\.css$": "identity-obj-proxy"
     }
   },
   "babel": {
