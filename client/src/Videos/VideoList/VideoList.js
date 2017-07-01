@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { videosItems } from '../videos.selectors';
-import { VideoItem } from '../VideoItem/VideoItem';
+import { getVideosArray } from '../selectors';
+import { VideoItem } from '../VideoItem';
 
-const VideoList = (props) => {
-    const items = props.items.map((video) => {
+const VideoList = ({ items }) => {
+    const videos = items.map((video) => {
         return (
             <VideoItem key={video.id} video={video} />
         );
@@ -13,13 +13,13 @@ const VideoList = (props) => {
 
     return (
         <div>
-            {items}
+            {videos}
         </div>
     );
 };
 
 const mapStateToProps = (state) => ({
-    items: videosItems(state),
+    items: getVideosArray(state),
 });
 
 export default connect(mapStateToProps)(VideoList);

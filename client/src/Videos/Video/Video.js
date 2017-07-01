@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import Link from 'redux-first-router-link';
 
 import { routesKeys } from '../routes';
-import { payload } from '../../router.selectors';
-import { videosEntities } from '../videos.selectors';
+import { getPayload } from '../../router.selectors';
+import { getVideosEntity } from '../selectors';
 import Player from '../../Player/Player';
 
-export const Video = (props) => {
-    const { video } = props;
+export const Video = ({ video }) => {
     const { id, name, ext, title, size, duration, dateCreated, dateModified } = video; 
     return (
         <div>
@@ -20,10 +19,10 @@ export const Video = (props) => {
 };
 
 const mapStateToProps = (state) => {
-    const { id } = payload(state);
-    const entities = videosEntities(state);
+    const { id } = getPayload(state);
+    const video = getVideosEntity(state, id);
     return {
-        video: entities[id] || {},
+        video,
     };
 };
 

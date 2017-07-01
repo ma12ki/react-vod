@@ -1,9 +1,9 @@
-const path = ({ location }) => location.pathname;
-const type = ({ location }) => location.type;
-const payload = ({ location }) => location.payload || {};
+const getPath = ({ location }) => location.pathname;
+const getType = ({ location }) => location.type;
+const getPayload = ({ location }) => location.payload || {};
 
 export {
-    path,
-    payload,
-    type,
+    getPath,
+    getPayload,
+    getType,
 };

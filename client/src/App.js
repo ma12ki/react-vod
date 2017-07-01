@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Container, Row, Col } from 'reactstrap';
+
 import logo from './logo.svg';
 import './App.css';
 
-import RouteSwitcher from './RouteSwitcher/RouteSwitcher';
+import { RouteSwitcher } from './routeSwitcher';
 
 class App extends Component {
   render() {

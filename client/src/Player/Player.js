@@ -6,7 +6,7 @@ export const Player = (props) => {
     const url = `http://localhost:3001/play/${id}`;
 
     return (
-        <video controls>
+        <video controls preload='auto'>
             <source src={url} type={type} />
             Your browser does not support the <code>video</code> element.
         </video>

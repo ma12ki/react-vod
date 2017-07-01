@@ -28,6 +28,8 @@ const get$ = (path) => {
     return apiFetch$(path, 'GET');
 };
 
-export {
+const http = {
     get$,
 };
+
+export { http };
