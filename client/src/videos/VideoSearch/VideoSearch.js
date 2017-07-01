@@ -13,7 +13,7 @@ export class VideoSearch extends React.PureComponent {
         performSearch: PropTypes.func.isRequired,
     }
 
-    debouncedSearch = debounce(250, false, (term) => {
+    debouncedSearch = debounce(100, false, (term) => {
         this.props.performSearch(term);
     });
 
