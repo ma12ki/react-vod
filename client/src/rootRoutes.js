@@ -1,4 +1,4 @@
-import { routeFinder } from './utils';
+import { combineRouteSwitchers } from './utils';
 import {
   routesMap as videosRoutesMap,
   routeSwitcher as videosRouteSwitcher
@@ -8,6 +8,6 @@ export const routesMap = {
   ...videosRoutesMap,
 };
 
-export const rootRouteSwitcher = routeFinder(
+export const rootRouteSwitcher = combineRouteSwitchers(
   videosRouteSwitcher,
 );

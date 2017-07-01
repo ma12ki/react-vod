@@ -14,7 +14,10 @@ export const normalizrEntityReducer = (entitiesKey, loadAllActionType, loadOneAc
                 const { entities } = action.payload;
                 return {
                     ...state,
-                    ...entities[entitiesKey]
+                    [entitiesKey]: {
+                        ...state[entitiesKey],
+                        ...entities[entitiesKey]
+                    }
                 };
             }
             default: {
