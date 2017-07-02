@@ -41,7 +41,7 @@ export class Video extends React.PureComponent {
                             <FileDuration duration={duration} />, <FileSize size={size} />
                         </CardSubtitle>
                         <CardText>{title}</CardText>
-                        <Link href={{ type: routesKeys.home }}>{'<<'} Back</Link>
+                        <Link to={{ type: routesKeys.home }}>{'<<'} Back</Link>
                     </CardBlock>
                 </Card>
             </div>

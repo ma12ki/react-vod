@@ -21,7 +21,7 @@ export const VideoItem = ({ video, searchTerm }) => {
             <td className={utils.alignRight}><FileDuration duration={duration} /></td>
             <td className={utils.alignRight}><FileSize size={size} /></td>
             <td className={utils.center}>
-                <Link href={{ type: routesKeys.video, payload: { id } }}>
+                <Link to={{ type: routesKeys.video, payload: { id } }}>
                     <FA name='play' />
                 </Link>
             </td>
