@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { getType } from '../../router.selectors';
@@ -11,6 +12,10 @@ export const RouteSwitcher = ({ routeKey }) => {
             { component }
         </div>
     );
+};
+
+RouteSwitcher.propTypes = {
+    routeKey: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => {
