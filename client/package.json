@@ -92,6 +92,9 @@
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$",
       "^.+\\.module\\.css$"
     ],
+    "moduleFileExtensions": [
+      "js", "json", "jsx", "node"
+    ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
       "^.+\\.module\\.css$": "identity-obj-proxy"
