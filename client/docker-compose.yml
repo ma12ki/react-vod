@@ -1,0 +1,20 @@
+version: '3'
+services:
+  client:
+    build: .
+    image: react-vod-client
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3000:3000"
+    command: yarn start
+  ci_test:
+    build: .
+    image: react-vod-client
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    environment:
+      CI: 'true'
+    command: yarn test
