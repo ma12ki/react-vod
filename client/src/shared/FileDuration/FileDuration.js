@@ -7,8 +7,12 @@ export const FileDuration = ({ duration }) => {
     const minutesText = minutes ? `${minutes}m` : '';
     const secondsText = seconds ? `${seconds}s` : '';
 
+    const finalText = [hoursText, minutesText, secondsText]
+        .filter((t) => t)
+        .join(' ');
+
     return (
-        <span>{hoursText} {minutesText} {secondsText}</span>
+        <span>{finalText}</span>
     );
 };
 
