@@ -3,7 +3,7 @@ import { combineEpics } from 'redux-observable';
 import { Observable } from 'rxjs';
 
 import { loadingErrorReducer, normalizrEntityReducer, normalizrResultReducer } from '../utils';
-import { getVideoList$, getOneVideo$ } from './videos.service.js';
+import { getVideoList$, getOneVideo$ } from './videos.service';
 
 // Actions
 const prefix = 'vod/videos/';
