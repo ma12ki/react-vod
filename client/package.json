@@ -58,6 +58,9 @@
     "react-error-overlay": "^1.0.7",
     "react-test-renderer": "^15.6.1",
     "style-loader": "0.17.0",
+    "stylelint": "^7.12.0",
+    "stylelint-config-css-modules": "^1.0.0",
+    "stylelint-config-standard": "^16.0.0",
     "sw-precache-webpack-plugin": "0.9.1",
     "url-loader": "0.5.8",
     "webpack": "2.6.1",
@@ -94,7 +97,10 @@
       "^.+\\.module\\.css$"
     ],
     "moduleFileExtensions": [
-      "js", "json", "jsx", "node"
+      "js",
+      "json",
+      "jsx",
+      "node"
     ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
