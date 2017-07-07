@@ -4,6 +4,7 @@
     "stylelint-config-css-modules"
   ],
   "rules": {
-    "indentation": 4
+    "indentation": 4,
+    "selector-pseudo-element-colon-notation": "single"
   }
 }
