@@ -1,0 +1,15 @@
+.interactive {
+    cursor: pointer;
+}
+
+.inactive :global(.fa) {
+    opacity: 0.3;
+}
+
+.inactive:hover :global(.fa) {
+    opacity: 0.6;
+}
+
+.sortIcon {
+    margin-left: 5px;
+}
