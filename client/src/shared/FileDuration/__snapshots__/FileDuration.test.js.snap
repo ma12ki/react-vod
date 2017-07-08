@@ -9,11 +9,11 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <span>
-    3h 25m 45s
+    3:25:45
 </span>,
   "nodes": Array [
     <span>
-      3h 25m 45s
+      3:25:45
 </span>,
   ],
   "options": Object {},
@@ -55,11 +55,11 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <span>
-          3h 25m 45s
+          3:25:45
 </span>,
         "_debugID": 2,
         "_renderedOutput": <span>
-          3h 25m 45s
+          3:25:45
 </span>,
       },
       "_renderedNodeType": 0,

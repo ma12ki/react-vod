@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 export const FileDuration = ({ duration }) => {
     const { hours, minutes, seconds } = splitDuration(duration);
-    const hoursText = hours ? `${hours}h` : '';
-    const minutesText = minutes ? `${minutes}m` : '';
-    const secondsText = seconds ? `${seconds}s` : '';
+    const secondsText = zeroFill(seconds);
+    const minutesText = zeroFill(minutes);
+    const hoursText = hours;
 
     const finalText = [hoursText, minutesText, secondsText]
-        .filter((t) => t)
-        .join(' ');
+        .join(':');
 
     return (
         <span>{finalText}</span>
@@ -32,5 +31,7 @@ const splitDuration = (seconds) => {
         seconds: Math.round(secondRemainder),
     };
 };
+
+const zeroFill = (num) => `00${num}`.substr(-2, 2);
 
 export default FileDuration;
