@@ -15,6 +15,11 @@ export class Video extends React.PureComponent {
     static propTypes = {
         video: PropTypes.shape({
             id: PropTypes.string,
+            name: PropTypes.string,
+            ext: PropTypes.string,
+            title: PropTypes.string,
+            size: PropTypes.number,
+            duration: PropTypes.number,
         }),
         loadVideo: PropTypes.func.isRequired,
     }
