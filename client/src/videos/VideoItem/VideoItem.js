@@ -11,7 +11,7 @@ import { getSearch } from '../selectors';
 import { utils } from '../../shared/cssModules';
 
 export const VideoItem = ({ video, searchTerm }) => {
-    const { id, name, title, path, size = 0, duration = 0, dateCreated } = video; 
+    const { id, name, title, path, size = 0, duration = 0, dateCreated = new Date(0) } = video; 
 
     return (
         <tr>

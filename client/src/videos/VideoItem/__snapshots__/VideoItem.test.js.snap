@@ -20,7 +20,7 @@ ShallowWrapper {
     <td
         className="center"
     >
-        09.07.2017
+        01.01.1970
     </td>
     <td
         className="alignRight"
@@ -68,7 +68,7 @@ ShallowWrapper {
       <td
             className="center"
       >
-            09.07.2017
+            01.01.1970
       </td>
       <td
             className="alignRight"
@@ -156,7 +156,7 @@ ShallowWrapper {
           <td
                     className="center"
           >
-                    09.07.2017
+                    01.01.1970
           </td>
           <td
                     className="alignRight"
@@ -204,7 +204,7 @@ ShallowWrapper {
           <td
                     className="center"
           >
-                    09.07.2017
+                    01.01.1970
           </td>
           <td
                     className="alignRight"
