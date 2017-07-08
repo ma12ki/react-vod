@@ -28,12 +28,12 @@ describe('Video', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('accepts "video" object', () => {
+    it('requires "video" object', () => {
         testPropTypes(
             Video,
             'video',
-            [{}, null],
-            [123, 'abc'],
+            [{}],
+            [123, 'abc', null, undefined],
             { loadVideo: () => null }
         );
     });

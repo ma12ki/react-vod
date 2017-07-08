@@ -20,7 +20,7 @@ export class Video extends React.PureComponent {
             title: PropTypes.string,
             size: PropTypes.number,
             duration: PropTypes.number,
-        }),
+        }).isRequired,
         loadVideo: PropTypes.func.isRequired,
     }
 
