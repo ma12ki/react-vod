@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Table } from 'reactstrap';
 
-import { getFilteredVideos } from '../selectors';
+import { getSortedVideos } from '../selectors';
+import { VideoSort } from '../VideoSort';
 import { VideoItem } from '../VideoItem';
-import { utils } from '../../shared/cssModules';
 
 export const VideoList = ({ items }) => {
     const videos = items.map((video) => {
@@ -17,13 +17,7 @@ export const VideoList = ({ items }) => {
     return (
         <Table>
             <thead>
-                <tr>
-                    <th className={utils.alignLeft}>Name</th>
-                    <th className={utils.center}>Date created</th>
-                    <th className={utils.alignRight}>Duration</th>
-                    <th className={utils.alignRight}>Size</th>
-                    <th></th>
-                </tr>
+                <VideoSort />
             </thead>
             <tbody>
                 {videos}
@@ -37,7 +31,7 @@ VideoList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-    items: getFilteredVideos(state),
+    items: getSortedVideos(state),
 });
 
 export default connect(mapStateToProps)(VideoList);

@@ -19,7 +19,28 @@ const getFilteredVideos = (state) => {
     const term = getSearch(state);
     const videos = getVideosArray(state);
 
-    return term ? videos.filter((video) => video.name.match(new RegExp(term, 'i'))) : videos;
+    if (term) {
+        return videos.filter((video) => video.name.match(new RegExp(term, 'i')));
+    }
+    return videos;
+};
+
+const getSort = (state) => getVideos(state).sort;
+const getSortedVideos = (state) => {
+    const filteredVideos = getFilteredVideos(state);
+    const { col, dir } = getSort(state);
+
+    if (col && dir) {
+        const sortFunction = _getSortFunction(col, dir);
+        return filteredVideos.sort(sortFunction);
+    }
+    return filteredVideos;
+};
+
+const _getSortFunction = (col, dir) => {
+    return dir === 'asc' ?
+        (a, b) => a[col] > b[col] :
+        (a, b) => a[col] < b[col];
 };
 
 export {
@@ -32,4 +53,6 @@ export {
     getVideosArray,
     getSearch,
     getFilteredVideos,
+    getSort,
+    getSortedVideos,
 };

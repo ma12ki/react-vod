@@ -18,6 +18,8 @@ const LOAD_VIDEO_ERROR = `${prefix}LOAD_VIDEO_ERROR`;
 
 const SEARCH = `${prefix}SEARCH`;
 
+const SORT = `${prefix}SORT`;
+
 // Action creators
 export const loadVideosStart = () => ({ type: LOAD_VIDEOS_START });
 export const loadVideosSuccess = (payload) => ({ type: LOAD_VIDEOS_SUCCESS, payload });
@@ -28,6 +30,8 @@ export const loadVideoSuccess = (payload) => ({ type: LOAD_VIDEO_SUCCESS, payloa
 export const loadVideoError = (payload) => ({ type: LOAD_VIDEO_ERROR, payload });
 
 export const search = (payload) => ({ type: SEARCH, payload });
+
+export const sort = (payload) => ({ type: SORT, payload });
 
 // Reducers
 export const oneVideoReducer = loadingErrorReducer(LOAD_VIDEO_START, LOAD_VIDEO_SUCCESS, LOAD_VIDEO_ERROR);
@@ -57,6 +61,17 @@ export const searchReducer = (state = '', action = {}) => {
     }
 };
 
+export const sortReducer = (state = { col: '', dir: '' }, action = {}) => {
+    switch (action.type) {
+        case SORT: {
+            return action.payload;
+        }
+        default: {
+            return state;
+        }
+    }
+};
+
 const reducer = combineReducers({
     one: oneVideoReducer,
     list: videoListReducer,
@@ -64,6 +79,7 @@ const reducer = combineReducers({
     result: videoResultReducer,
     initialized: initializedReducer,
     search: searchReducer,
+    sort: sortReducer,
 });
 
 export default reducer;
