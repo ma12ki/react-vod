@@ -32,14 +32,15 @@ server.setConfig((app) => {
 /**
  * Error Handler. Provides full stack - remove for production
  */
-server.setErrorConfig((app) => {
-    app.use(errorHandler());
-});
+if (process.env.NODE_ENV !== 'production') {
+    server.setErrorConfig((app) => {
+        app.use(errorHandler());
+    });
+}
 
 /**
  * Build the server.
  */
-
 const app = server.build();
 
 export { app };
