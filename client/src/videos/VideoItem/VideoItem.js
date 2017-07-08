@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Link from 'redux-first-router-link';
 import moment from 'moment';
@@ -10,7 +11,7 @@ import { getSearch } from '../selectors';
 import { utils } from '../../shared/cssModules';
 
 export const VideoItem = ({ video, searchTerm }) => {
-    const { id, name, title, path, size, duration, dateCreated } = video; 
+    const { id, name, title, path, size = 0, duration = 0, dateCreated } = video; 
 
     return (
         <tr>
@@ -27,6 +28,19 @@ export const VideoItem = ({ video, searchTerm }) => {
             </td>
         </tr>
     );
+};
+
+VideoItem.propTypes = {
+    video: PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string,
+        title: PropTypes.string,
+        path: PropTypes.string,
+        size: PropTypes.number,
+        duration: PropTypes.number,
+        dateCreated: PropTypes.any,
+    }).isRequired,
+    searchTerm: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({

@@ -1,0 +1,258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VideoItem matches the snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <tr>
+    <td
+        className="alignLeft"
+        title="undefined; undefined"
+    >
+        <Unknown
+            term=""
+        />
+    </td>
+    <td
+        className="center"
+    >
+        08.07.2017
+    </td>
+    <td
+        className="alignRight"
+    >
+        <Unknown
+            duration={0}
+        />
+    </td>
+    <td
+        className="alignRight"
+    >
+        <Unknown
+            size={0}
+        />
+    </td>
+    <td
+        className="center"
+    >
+        <Connect(Link)
+            to={
+                Object {
+                    "payload": Object {
+                      "id": undefined,
+                    },
+                    "type": "vod/router/videos/VIDEO",
+                  }
+            }
+        >
+            <FontAwesome
+                name="play"
+            />
+        </Connect(Link)>
+    </td>
+</tr>,
+  "nodes": Array [
+    <tr>
+      <td
+            className="alignLeft"
+            title="undefined; undefined"
+      >
+            <Unknown
+                  term=""
+            />
+      </td>
+      <td
+            className="center"
+      >
+            08.07.2017
+      </td>
+      <td
+            className="alignRight"
+      >
+            <Unknown
+                  duration={0}
+            />
+      </td>
+      <td
+            className="alignRight"
+      >
+            <Unknown
+                  size={0}
+            />
+      </td>
+      <td
+            className="center"
+      >
+            <Connect(Link)
+                  to={
+                        Object {
+                              "payload": Object {
+                                "id": undefined,
+                              },
+                              "type": "vod/router/videos/VIDEO",
+                            }
+                  }
+            >
+                  <FontAwesome
+                        name="play"
+                  />
+            </Connect(Link)>
+      </td>
+</tr>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Unknown
+        searchTerm=""
+        video={Object {}}
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "searchTerm": "",
+          "video": Object {},
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <tr>
+          <td
+                    className="alignLeft"
+                    title="undefined; undefined"
+          >
+                    <Unknown
+                              term=""
+                    />
+          </td>
+          <td
+                    className="center"
+          >
+                    08.07.2017
+          </td>
+          <td
+                    className="alignRight"
+          >
+                    <Unknown
+                              duration={0}
+                    />
+          </td>
+          <td
+                    className="alignRight"
+          >
+                    <Unknown
+                              size={0}
+                    />
+          </td>
+          <td
+                    className="center"
+          >
+                    <Connect(Link)
+                              to={
+                                        Object {
+                                                  "payload": Object {
+                                                    "id": undefined,
+                                                  },
+                                                  "type": "vod/router/videos/VIDEO",
+                                                }
+                              }
+                    >
+                              <FontAwesome
+                                        name="play"
+                              />
+                    </Connect(Link)>
+          </td>
+</tr>,
+        "_debugID": 2,
+        "_renderedOutput": <tr>
+          <td
+                    className="alignLeft"
+                    title="undefined; undefined"
+          >
+                    <Unknown
+                              term=""
+                    />
+          </td>
+          <td
+                    className="center"
+          >
+                    08.07.2017
+          </td>
+          <td
+                    className="alignRight"
+          >
+                    <Unknown
+                              duration={0}
+                    />
+          </td>
+          <td
+                    className="alignRight"
+          >
+                    <Unknown
+                              size={0}
+                    />
+          </td>
+          <td
+                    className="center"
+          >
+                    <Connect(Link)
+                              to={
+                                        Object {
+                                                  "payload": Object {
+                                                    "id": undefined,
+                                                  },
+                                                  "type": "vod/router/videos/VIDEO",
+                                                }
+                              }
+                    >
+                              <FontAwesome
+                                        name="play"
+                              />
+                    </Connect(Link)>
+          </td>
+</tr>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Unknown
+    searchTerm=""
+    video={Object {}}
+/>,
+}
+`;
