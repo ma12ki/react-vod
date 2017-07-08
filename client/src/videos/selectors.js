@@ -25,7 +25,7 @@ const getFilteredVideos = (state) => {
     return videos;
 };
 
-const getSort = (state) => getVideos(state).sort;
+const getSort = (state) => getVideos(state).sort || {};
 const getSortedVideos = (state) => {
     const filteredVideos = getFilteredVideos(state);
     const { col, dir } = getSort(state);

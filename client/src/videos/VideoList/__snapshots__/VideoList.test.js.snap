@@ -13,29 +13,7 @@ ShallowWrapper {
     tag="table"
 >
     <thead>
-        <tr>
-            <th
-                className="alignLeft"
-            >
-                Name
-            </th>
-            <th
-                className="center"
-            >
-                Date created
-            </th>
-            <th
-                className="alignRight"
-            >
-                Duration
-            </th>
-            <th
-                className="alignRight"
-            >
-                Size
-            </th>
-            <th />
-        </tr>
+        <Connect(Component) />
     </thead>
     <tbody>
         
@@ -47,29 +25,7 @@ ShallowWrapper {
       tag="table"
 >
       <thead>
-            <tr>
-                  <th
-                        className="alignLeft"
-                  >
-                        Name
-                  </th>
-                  <th
-                        className="center"
-                  >
-                        Date created
-                  </th>
-                  <th
-                        className="alignRight"
-                  >
-                        Duration
-                  </th>
-                  <th
-                        className="alignRight"
-                  >
-                        Size
-                  </th>
-                  <th />
-            </tr>
+            <Connect(Component) />
       </thead>
       <tbody>
             
@@ -119,29 +75,7 @@ ShallowWrapper {
           tag="table"
 >
           <thead>
-                    <tr>
-                              <th
-                                        className="alignLeft"
-                              >
-                                        Name
-                              </th>
-                              <th
-                                        className="center"
-                              >
-                                        Date created
-                              </th>
-                              <th
-                                        className="alignRight"
-                              >
-                                        Duration
-                              </th>
-                              <th
-                                        className="alignRight"
-                              >
-                                        Size
-                              </th>
-                              <th />
-                    </tr>
+                    <Connect(Component) />
           </thead>
           <tbody>
                     
@@ -153,29 +87,7 @@ ShallowWrapper {
           tag="table"
 >
           <thead>
-                    <tr>
-                              <th
-                                        className="alignLeft"
-                              >
-                                        Name
-                              </th>
-                              <th
-                                        className="center"
-                              >
-                                        Date created
-                              </th>
-                              <th
-                                        className="alignRight"
-                              >
-                                        Duration
-                              </th>
-                              <th
-                                        className="alignRight"
-                              >
-                                        Size
-                              </th>
-                              <th />
-                    </tr>
+                    <Connect(Component) />
           </thead>
           <tbody>
                     
