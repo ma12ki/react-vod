@@ -8,7 +8,12 @@ export const testPropTypes = (component, propName, acceptableValues, unacceptabl
         for (let propValue of testValues) {
             console.error.mockClear();
             React.createElement(component, {...otherProps, [propName]: propValue});
-            expect(console.error).toHaveBeenCalledTimes(expectError ? 1 : 0);
+            try {
+                expect(console.error).toHaveBeenCalledTimes(expectError ? 1 : 0);
+            } catch (err) {
+                console.log(`${propName} expected to ${expectError ? '' : 'NOT'} fail for value ${propValue}`);
+                throw err;
+            }
         }
     };
     _test(acceptableValues || [], false);
