@@ -1,11 +1,11 @@
 import * as path from 'path';
-import * as fs from 'fs';
-import * as util from 'util';
+import { stat, Stats, readdir } from 'fs';
+import { promisify } from 'util';
 import * as _ from 'lodash';
 import ffprobe = require('node-ffprobe');
 
-const stat = util.promisify(fs.stat) as (path: string) => Promise<fs.Stats>;
-const readdir = util.promisify(fs.readdir) as (path: string) => Promise<string[]>;
+const statP = promisify(stat) as (path: string) => Promise<Stats>;
+const readdirP = promisify(readdir) as (path: string) => Promise<string[]>;
 
 interface IStream {
     width: number;
@@ -38,14 +38,14 @@ const probe: (track: string) => Promise<IProbeData> = (track) => {
     });
 };
 
-export interface IFileInfo extends fs.Stats {
+export interface IFileInfo extends Stats {
     path: string;
 }
 
 const getFilesRecursive: (dir: string) => Promise<IFileInfo[]> = async (dir) => {
-    const stats = await stat(dir);
+    const stats = await statP(dir);
     if (stats.isDirectory()) {
-        const subDirs = await readdir(dir);
+        const subDirs = await readdirP(dir);
         const absoluteSubDirs = subDirs.map((subDir) => path.join(dir, subDir));
         const subFiles = await Promise.all(absoluteSubDirs.map((subDir) => getFilesRecursive(subDir)));
         return _.flatten(subFiles);
@@ -57,15 +57,15 @@ const getFilesRecursive: (dir: string) => Promise<IFileInfo[]> = async (dir) => 
 };
 
 export interface IFsp {
-    stat: (path: string) => Promise<fs.Stats>;
+    stat: (path: string) => Promise<Stats>;
     readdir: (path: string) => Promise<string[]>;
     probe: (track: string) => Promise<IProbeData>;
     getFilesRecursive: (dir: string) => Promise<IFileInfo[]>;
 }
 
 const fsp: IFsp = {
-    stat,
-    readdir,
+    stat: statP,
+    readdir: readdirP,
     probe,
     getFilesRecursive,
 };
