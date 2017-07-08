@@ -25,6 +25,13 @@ export class ReaderController implements interfaces.Controller {
     @Get('/:id')
     public async getVideoFile(req: express.Request, res: express.Response, next: express.NextFunction): Promise<IVideoFile> {
         const { id } = req.params;
-        return this.readerService.getVideoFile(id);
+        if (id === undefined) {
+            return res.status(400).send() as any;
+        }
+        const video = await this.readerService.getVideoFile(id);
+        if (!video) {
+            return res.status(404).send() as any;
+        }
+        return video;
     }
 }
