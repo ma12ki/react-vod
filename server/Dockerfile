@@ -3,7 +3,7 @@ FROM node:8.1.2
 WORKDIR /usr/app
 
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm install --silent
 
 COPY . .
 
