@@ -1,0 +1,20 @@
+version: '3'
+services:
+  server:
+    build: .
+    image: react-vod-server
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3001:3001"
+    command: npm build-serve
+  ci_test:
+    build: .
+    image: react-vod-server
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    environment:
+      CI: 'true'
+    command: npm test
