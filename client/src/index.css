@@ -1,5 +1,13 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: Corbel, sans-serif;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: Corbel, sans-serif;
 }
