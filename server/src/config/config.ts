@@ -10,4 +10,8 @@ const config = {
     dirs,
 };
 
+if (!config.production) {
+    console.log(config);
+}
+
 export { config };
