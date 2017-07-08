@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VideoList matches the snapshot 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <Table
+    responsiveTag="div"
+    tag="table"
+>
+    <thead>
+        <tr>
+            <th
+                className="alignLeft"
+            >
+                Name
+            </th>
+            <th
+                className="center"
+            >
+                Date created
+            </th>
+            <th
+                className="alignRight"
+            >
+                Duration
+            </th>
+            <th
+                className="alignRight"
+            >
+                Size
+            </th>
+            <th />
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+</Table>,
+  "nodes": Array [
+    <Table
+      responsiveTag="div"
+      tag="table"
+>
+      <thead>
+            <tr>
+                  <th
+                        className="alignLeft"
+                  >
+                        Name
+                  </th>
+                  <th
+                        className="center"
+                  >
+                        Date created
+                  </th>
+                  <th
+                        className="alignRight"
+                  >
+                        Duration
+                  </th>
+                  <th
+                        className="alignRight"
+                  >
+                        Size
+                  </th>
+                  <th />
+            </tr>
+      </thead>
+      <tbody>
+            
+      </tbody>
+</Table>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Unknown
+        items={Array []}
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "items": Array [],
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <Table
+          responsiveTag="div"
+          tag="table"
+>
+          <thead>
+                    <tr>
+                              <th
+                                        className="alignLeft"
+                              >
+                                        Name
+                              </th>
+                              <th
+                                        className="center"
+                              >
+                                        Date created
+                              </th>
+                              <th
+                                        className="alignRight"
+                              >
+                                        Duration
+                              </th>
+                              <th
+                                        className="alignRight"
+                              >
+                                        Size
+                              </th>
+                              <th />
+                    </tr>
+          </thead>
+          <tbody>
+                    
+          </tbody>
+</Table>,
+        "_debugID": 2,
+        "_renderedOutput": <Table
+          responsiveTag="div"
+          tag="table"
+>
+          <thead>
+                    <tr>
+                              <th
+                                        className="alignLeft"
+                              >
+                                        Name
+                              </th>
+                              <th
+                                        className="center"
+                              >
+                                        Date created
+                              </th>
+                              <th
+                                        className="alignRight"
+                              >
+                                        Duration
+                              </th>
+                              <th
+                                        className="alignRight"
+                              >
+                                        Size
+                              </th>
+                              <th />
+                    </tr>
+          </thead>
+          <tbody>
+                    
+          </tbody>
+</Table>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Unknown
+    items={Array []}
+/>,
+}
+`;
