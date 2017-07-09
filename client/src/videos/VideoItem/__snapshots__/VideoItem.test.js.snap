@@ -8,10 +8,13 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <tr>
+  "node": <tr
+    className="row"
+    onClick={[Function]}
+>
     <td
         className="alignLeft"
-        title="undefined; undefined"
+        title={undefined}
     >
         <Unknown
             term=""
@@ -56,10 +59,13 @@ ShallowWrapper {
     </td>
 </tr>,
   "nodes": Array [
-    <tr>
+    <tr
+      className="row"
+      onClick={[Function]}
+>
       <td
             className="alignLeft"
-            title="undefined; undefined"
+            title={undefined}
       >
             <Unknown
                   term=""
@@ -144,10 +150,13 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <tr>
+        "_currentElement": <tr
+          className="row"
+          onClick={[Function]}
+>
           <td
                     className="alignLeft"
-                    title="undefined; undefined"
+                    title={undefined}
           >
                     <Unknown
                               term=""
@@ -192,10 +201,13 @@ ShallowWrapper {
           </td>
 </tr>,
         "_debugID": 2,
-        "_renderedOutput": <tr>
+        "_renderedOutput": <tr
+          className="row"
+          onClick={[Function]}
+>
           <td
                     className="alignLeft"
-                    title="undefined; undefined"
+                    title={undefined}
           >
                     <Unknown
                               term=""
