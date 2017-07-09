@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
 
+import { ThemedContainer } from './themedContainer';
 import { store } from './configureStore';
 import { RouteSwitcher } from './routeSwitcher';
 import styles from './app.module.css';
@@ -10,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className={styles.app}>
+        <ThemedContainer>
           <div className={styles.header}>
             <h2>React-VoD</h2>
           </div>
@@ -21,7 +22,7 @@ class App extends Component {
               </Col>
             </Row>
           </Container>
-        </div>
+        </ThemedContainer>
       </Provider>
     );
   }

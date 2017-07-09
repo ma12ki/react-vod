@@ -11,8 +11,8 @@ export const routesKeys = {
 };
 
 export const routesMap = { 
-    [routesKeys.home]: '/', 
-    [routesKeys.video]: '/video/:id', 
+    [routesKeys.home]: { path: '/', title: 'Home' }, 
+    [routesKeys.video]: { path: '/video/:id', title: 'Play', theme: 'dark' }, 
 };
 
 export const routeSwitcher = (key) => {

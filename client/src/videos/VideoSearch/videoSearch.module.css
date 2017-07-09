@@ -1,6 +1,7 @@
 .input.input {
     border-radius: 0;
     border-width: 0;
+    background-color: transparent;
 }
 
 .input.input:global(::placeholder) {
