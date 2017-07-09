@@ -6,6 +6,7 @@ import { debounce } from 'throttle-debounce';
 
 import { getSearch } from '../selectors';
 import { search } from '../ducks';
+import styles from './videoSearch.module.css';
 
 export class VideoSearch extends React.PureComponent {
     static propTypes = {
@@ -20,7 +21,7 @@ export class VideoSearch extends React.PureComponent {
     render() {
         const { search } = this.props;
 
-        return <Input defaultValue={search} onKeyUp={(e) => this.debouncedSearch(e.target.value)} placeholder='search files...' />;
+        return <Input defaultValue={search} className={styles.input} onKeyUp={(e) => this.debouncedSearch(e.target.value)} placeholder='search files...' />;
     }
 }
 

@@ -1,0 +1,7 @@
+.input.input {
+    border-radius: 0;
+}
+
+.input.input:global(::placeholder) {
+    opacity: 0.5;
+}
