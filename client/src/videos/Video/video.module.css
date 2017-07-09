@@ -1,0 +1,11 @@
+.card.card {
+    border-radius: 0;
+    border-width: 0;
+    background-color: transparent;
+    color: #ddd;
+}
+
+.ext {
+    color: #aaa;
+    font-size: 14px;
+}

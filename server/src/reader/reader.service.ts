@@ -38,7 +38,7 @@ export class ReaderService implements IReader {
                     path: file.path,
                     name: path.basename(file.path, probeData.fileext),
                     ext: probeData.fileext,
-                    title: `${probeData.metadata.title}`,
+                    title: `${probeData.metadata.title || ''}`,
                     size: file.size,
                     duration: probeData.format.duration,
                     dateCreated: file.ctime,

@@ -10,6 +10,7 @@ import { getVideosEntity } from '../selectors';
 import { loadVideoStart } from '../ducks';
 import { Player } from '../../player';
 import { FileDuration, FileSize } from '../../shared';
+import styles from './video.module.css';
 
 export class Video extends React.PureComponent {
     static propTypes = {
@@ -33,15 +34,17 @@ export class Video extends React.PureComponent {
 
     render() {
         const { video } = this.props;
-        const { id, name, ext, title, size = 0, duration = 0 } = video; 
+        const { id, name, ext, title = '', size = 0, duration = 0 } = video; 
         return (
             <div>
-                <Card>
+                <Card className={styles.card}>
+                    <CardBlock>
+                        <CardTitle>{name}<span className={styles.ext}>{ext}</span></CardTitle>
+                    </CardBlock>
                     <CardBlock>
                         { id ? <Player id={id} ext={ext} /> : null }
                     </CardBlock>
                     <CardBlock>
-                        <CardTitle>{name}{ext}</CardTitle>
                         <CardSubtitle>
                             <FileDuration duration={duration} />, <FileSize size={size} />
                         </CardSubtitle>

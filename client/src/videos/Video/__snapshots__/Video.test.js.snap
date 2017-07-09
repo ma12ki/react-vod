@@ -10,19 +10,26 @@ ShallowWrapper {
   "length": 1,
   "node": <div>
     <Card
+        className="card"
         tag="div"
     >
-        <CardBlock
-            tag="div"
-        />
         <CardBlock
             tag="div"
         >
             <CardTitle
                 tag="h4"
             >
-                
+                <span
+                    className="ext"
+                />
             </CardTitle>
+        </CardBlock>
+        <CardBlock
+            tag="div"
+        />
+        <CardBlock
+            tag="div"
+        >
             <CardSubtitle
                 tag="h6"
             >
@@ -53,19 +60,26 @@ ShallowWrapper {
   "nodes": Array [
     <div>
       <Card
+            className="card"
             tag="div"
       >
-            <CardBlock
-                  tag="div"
-            />
             <CardBlock
                   tag="div"
             >
                   <CardTitle
                         tag="h4"
                   >
-                        
+                        <span
+                              className="ext"
+                        />
                   </CardTitle>
+            </CardBlock>
+            <CardBlock
+                  tag="div"
+            />
+            <CardBlock
+                  tag="div"
+            >
                   <CardSubtitle
                         tag="h6"
                   >
@@ -136,19 +150,26 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
           <Card
+                    className="card"
                     tag="div"
           >
-                    <CardBlock
-                              tag="div"
-                    />
                     <CardBlock
                               tag="div"
                     >
                               <CardTitle
                                         tag="h4"
                               >
-                                        
+                                        <span
+                                                  className="ext"
+                                        />
                               </CardTitle>
+                    </CardBlock>
+                    <CardBlock
+                              tag="div"
+                    />
+                    <CardBlock
+                              tag="div"
+                    >
                               <CardSubtitle
                                         tag="h6"
                               >
@@ -179,19 +200,26 @@ ShallowWrapper {
         "_debugID": 2,
         "_renderedOutput": <div>
           <Card
+                    className="card"
                     tag="div"
           >
-                    <CardBlock
-                              tag="div"
-                    />
                     <CardBlock
                               tag="div"
                     >
                               <CardTitle
                                         tag="h4"
                               >
-                                        
+                                        <span
+                                                  className="ext"
+                                        />
                               </CardTitle>
+                    </CardBlock>
+                    <CardBlock
+                              tag="div"
+                    />
+                    <CardBlock
+                              tag="div"
+                    >
                               <CardSubtitle
                                         tag="h6"
                               >
