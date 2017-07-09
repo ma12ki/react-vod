@@ -46,7 +46,7 @@ describe('HighlightOccurences', () => {
         ].forEach(({ term, children, expected }) => {
             const wrapper = makeWrapper({ term, children });
 
-            expect(wrapper.html()).toEqual(`<span>${expected}</span>`);
+            expect(wrapper.html()).toEqual(`<span class="markContainer">${expected}</span>`);
         });
     });
 

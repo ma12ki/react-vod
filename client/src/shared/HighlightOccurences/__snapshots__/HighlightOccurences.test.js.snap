@@ -8,7 +8,9 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <span>
+  "node": <span
+    className="markContainer"
+>
     a
     <mark>
         b
@@ -16,7 +18,9 @@ ShallowWrapper {
     a
 </span>,
   "nodes": Array [
-    <span>
+    <span
+      className="markContainer"
+>
       a
       <mark>
             b
@@ -65,7 +69,9 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <span>
+        "_currentElement": <span
+          className="markContainer"
+>
           a
           <mark>
                     b
@@ -73,7 +79,9 @@ ShallowWrapper {
           a
 </span>,
         "_debugID": 2,
-        "_renderedOutput": <span>
+        "_renderedOutput": <span
+          className="markContainer"
+>
           a
           <mark>
                     b
