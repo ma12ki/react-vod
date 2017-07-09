@@ -1,7 +1,11 @@
 const getVideos = ({ videos }) => videos;
 const getInitialized = (state) => getVideos(state).initialized;
-const getLoading = (state) => getVideos(state).loading;
-const getError = (state) => getVideos(state).error;
+const getList = (state) => getVideos(state).list || {};
+const getListLoading = (state) => getList(state).loading;
+const getListError = (state) => getList(state).error;
+const getListRefresh = (state) => getVideos(state).listRefresh || {};
+const getListRefreshLoading = (state) => getListRefresh(state).loading;
+const getListRefreshError = (state) => getListRefresh(state).error;
 const getVideosResult = (state) => getVideos(state).result || [];
 const getEntities = (state) => getVideos(state).entities || {};
 const getVideosEntities = (state) => getEntities(state).videos || {};
@@ -45,8 +49,10 @@ const _getSortFunction = (col, dir) => {
 
 export {
     getInitialized,
-    getLoading,
-    getError,
+    getListLoading,
+    getListError,
+    getListRefreshLoading,
+    getListRefreshError,
     getVideosEntities,
     getVideosEntity,
     getVideosResult,

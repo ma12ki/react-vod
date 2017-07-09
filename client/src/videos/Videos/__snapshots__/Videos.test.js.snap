@@ -9,12 +9,22 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div>
-    <Connect(VideoSearch) />
+    <div
+        className="flex"
+    >
+        <Connect(VideoSearch) />
+        <Connect(Component) />
+    </div>
     <Connect(Component) />
 </div>,
   "nodes": Array [
     <div>
-      <Connect(VideoSearch) />
+      <div
+            className="flex"
+      >
+            <Connect(VideoSearch) />
+            <Connect(Component) />
+      </div>
       <Connect(Component) />
 </div>,
   ],
@@ -59,12 +69,22 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div>
-          <Connect(VideoSearch) />
+          <div
+                    className="flex"
+          >
+                    <Connect(VideoSearch) />
+                    <Connect(Component) />
+          </div>
           <Connect(Component) />
 </div>,
         "_debugID": 2,
         "_renderedOutput": <div>
-          <Connect(VideoSearch) />
+          <div
+                    className="flex"
+          >
+                    <Connect(VideoSearch) />
+                    <Connect(Component) />
+          </div>
           <Connect(Component) />
 </div>,
       },

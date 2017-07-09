@@ -1,5 +1,5 @@
 export const loadingErrorReducer = (startActionType, successActionType, errorActionType) => 
-    (state = {}, action = {}) => {
+    (state = { loading: false, error: null }, action = {}) => {
         switch (action.type) {
             case startActionType: {
                 return {

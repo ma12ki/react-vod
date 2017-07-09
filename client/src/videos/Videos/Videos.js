@@ -6,6 +6,8 @@ import { getInitialized } from '../selectors';
 import { loadVideosStart } from '../ducks';
 import { VideoList } from '../VideoList';
 import { VideoSearch } from '../VideoSearch';
+import { VideoRefresh } from '../VideoRefresh';
+import styles from './videos.module.css';
 
 export class Videos extends React.PureComponent {
     static propTypes = {
@@ -22,7 +24,10 @@ export class Videos extends React.PureComponent {
     render() {
         return (
             <div>
-                <VideoSearch />
+                <div className={styles.flex}>
+                    <VideoSearch />
+                    <VideoRefresh />
+                </div>
                 <VideoList />
             </div>
         );

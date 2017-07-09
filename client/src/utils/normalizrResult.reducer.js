@@ -1,16 +1,18 @@
-export const normalizrResultReducer = (loadAllActionType, loadOneActionType) => 
-    (state = [], action = {}) => {
-        switch (action.type) {
-            case loadAllActionType: {
-                const { result } = action.payload;
-                return [...result];
-            }
-            case loadOneActionType: {
-                const { result } = action.payload;
-                return [...state, result];
-            }
-            default: {
-                return state;
-            }
+export const normalizrResultReducer = (loadAllActionTypes, loadOneActionTypes) => {
+    loadAllActionTypes = [].concat(loadAllActionTypes);
+    loadOneActionTypes = [].concat(loadOneActionTypes);
+
+    return (state = [], action = {}) => {
+        const { type, payload } = action;
+
+        if (loadAllActionTypes.includes(type)) {
+            const { result } = payload;
+            return [...result];
+        } else if (loadOneActionTypes.includes(type)) {
+            const { result } = action.payload;
+            return [...state, result];
+        } else {
+            return state;
         }
     };
+} 
