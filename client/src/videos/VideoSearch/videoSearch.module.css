@@ -1,7 +1,12 @@
 .input.input {
     border-radius: 0;
+    border-width: 0;
 }
 
 .input.input:global(::placeholder) {
-    opacity: 0.5;
+    opacity: 0.3;
+}
+
+.input.input:global(:focus::placeholder) {
+    opacity: 0.6;
 }

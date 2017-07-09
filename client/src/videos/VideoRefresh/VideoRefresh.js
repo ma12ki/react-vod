@@ -6,10 +6,11 @@ import FA from 'react-fontawesome';
 
 import { getListRefreshLoading, getListRefreshError } from '../selectors';
 import { refreshVideosStart } from '../ducks';
+import styles from './videoRefresh.module.css';
 
 export const VideoRefresh = ({ loading, refreshVideos }) => {
     return (
-        <Button color='link' disabled={loading} onClick={refreshVideos} title='Rescan data on the disk'>
+        <Button color='link' disabled={loading} className={styles.button} onClick={refreshVideos} title='Rescan data on the disk'>
             <FA name='refresh' spin={loading} />
         </Button>
     );
