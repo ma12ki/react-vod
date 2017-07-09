@@ -9,6 +9,14 @@ services:
     ports:
       - "3000:3000"
     command: yarn start
+  client_prod:
+    build: .
+    image: react-vod-client-prod
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    command: yarn build-serve
   ci_test:
     build: .
     image: react-vod-client
