@@ -5,6 +5,7 @@
 
 .input.input:global(::placeholder) {
     opacity: 0.3;
+    transition: opacity 0.15s ease-in-out;
 }
 
 .input.input:global(:focus::placeholder) {

@@ -1,9 +1,19 @@
 .app {
     text-align: center;
+    height: 100%;
 }
 
-.appHeader {
+.header {
     background-color: #222;
     padding: 20px;
     color: white;
+    height: 80px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+.container {
+    padding-top: 80px;
+    height: 100%;
 }

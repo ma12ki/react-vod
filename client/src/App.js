@@ -11,10 +11,10 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className={styles.app}>
-          <div className={styles.appHeader}>
+          <div className={styles.header}>
             <h2>React-VoD</h2>
           </div>
-          <Container>
+          <Container className={styles.container}>
             <Row>
               <Col xs='12'>
                 <RouteSwitcher />
