@@ -20,7 +20,6 @@ export interface INewVideoFile {
 
 export interface IVideoFile extends INewVideoFile {
     id: string;
-    slug: string;
 }
 
 export interface IVideoStore {
