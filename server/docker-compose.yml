@@ -9,6 +9,15 @@ services:
     ports:
       - "3001:3001"
     command: npm build-serve
+  server_prod:
+    build: .
+    image: react-vod-server-prod
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+    command: npm run build-serve
   ci_test:
     build: .
     image: react-vod-server
