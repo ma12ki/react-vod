@@ -1,12 +1,14 @@
 const path = require('path');
-const serve = require('serve');
+const express = require('express');
+const cors = require('cors');
 
 const rootDir = path.resolve(__dirname, '..', 'build');
+const port = process.env.PORT || 3000;
+const app = express();
 
-const port = 3000;
+app.use(cors());
+app.use(express.static(rootDir));
 
-console.log('SERVE_BUILD WTF');
-
-const server = serve(rootDir, {
-  port,
+app.listen(port, () => {
+  console.log(`listening on ${port}`);
 });

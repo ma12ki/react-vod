@@ -1,0 +1,30 @@
+version: '3'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: ./Dockerfile
+    image: react-vod-client-prod
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      REACT_APP_API_URL: http://localhost:3001/
+    command: yarn build-serve
+    depends_on:
+      - server
+  server:
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile
+    image: react-vod-server-prod
+    # volumes:
+    #   - C:\testVideos:/usr/app/videos
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      APP_VIDEO_DIRS: /usr/app/videos
+    command: npm run build-serve
