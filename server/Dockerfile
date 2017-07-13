@@ -1,4 +1,4 @@
-FROM node:8.1.2
+FROM senecio/node-ffprobe:8.1.4
 
 WORKDIR /usr/app
 

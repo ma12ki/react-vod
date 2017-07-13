@@ -3,7 +3,6 @@ services:
   client:
     build:
       context: ./client
-      dockerfile: ./Dockerfile
     image: react-vod-client-prod
     ports:
       - "3000:3000"
@@ -17,10 +16,9 @@ services:
   server:
     build:
       context: ./server
-      dockerfile: ./Dockerfile
     image: react-vod-server-prod
-    # volumes:
-    #   - C:\testVideos:/usr/app/videos
+    volumes:
+      - C:\testVideos:/usr/app/videos
     ports:
       - "3001:3001"
     environment:
